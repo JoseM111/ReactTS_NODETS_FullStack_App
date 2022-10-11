@@ -1,8 +1,15 @@
 // Profile.tsx
 import { Avatar, Box, Typography } from '@mui/material';
 import { FC, ReactElement } from 'react';
+//import PropTypes from 'prop-types';
 
-const ProfileComponent: FC = (): ReactElement => {
+interface IProfile {
+    name: string;
+}
+
+const ProfileComponent: FC<IProfile> = (props): ReactElement => {
+    const { name = 'Alias111' } = props;
+
     const avatarStyles = {
         width: '96px',
         height: '96px',
@@ -25,13 +32,13 @@ const ProfileComponent: FC = (): ReactElement => {
                     variant="h4"
                     color="text.primary"
                 >
-                    Testing
+                    {`${name.substring(0, 1)}`}
                 </Typography>
             </Avatar>
 
             {/* Name */}
             <Typography variant="h6" color="text.primary">
-                Welcome, Alias111
+                {`Welcome, ${name}`}
             </Typography>
 
             {/* Welcome Message */}
@@ -46,3 +53,7 @@ const ProfileComponent: FC = (): ReactElement => {
 };
 
 export default ProfileComponent;
+
+//ProfileComponent.propTypes = {
+//    name: PropTypes.string.isRequired,
+//};
